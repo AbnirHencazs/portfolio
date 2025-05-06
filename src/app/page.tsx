@@ -1,0 +1,183 @@
+import ProjectCard from 'app/components/ProjectCard'
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from 'react-icons/fa'
+import { SiTypescript, SiNextdotjs, SiTailwindcss, SiGit } from 'react-icons/si'
+
+const skills = [
+  { name: 'React', icon: <FaReact /> },
+  { name: 'Next.js', icon: <SiNextdotjs /> },
+  { name: 'TypeScript', icon: <SiTypescript /> },
+  { name: 'Node.js', icon: <FaNodeJs /> },
+  { name: 'HTML5', icon: <FaHtml5 /> },
+  { name: 'CSS3', icon: <FaCss3Alt /> },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+  { name: 'Git', icon: <SiGit /> },
+]
+
+const projects = [
+  {
+    title: 'E-commerce Platform',
+    description: 'A modern e-commerce platform built with Next.js, featuring real-time inventory management and secure payment processing.',
+    image: '/projects/ecommerce.jpg',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    demoUrl: 'https://ecommerce-demo.com',
+    githubUrl: 'https://github.com/username/ecommerce',
+  },
+  {
+    title: 'Task Management App',
+    description: 'A collaborative task management application with real-time updates and team collaboration features.',
+    image: '/projects/task-manager.jpg',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
+    demoUrl: 'https://task-manager-demo.com',
+    githubUrl: 'https://github.com/username/task-manager',
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'A responsive portfolio website showcasing projects and skills with a modern design.',
+    image: '/projects/portfolio.jpg',
+    technologies: ['Next.js', 'Tailwind CSS', 'TypeScript'],
+    demoUrl: 'https://portfolio-demo.com',
+    githubUrl: 'https://github.com/username/portfolio',
+  },
+]
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+            Frontend Developer
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+            Building modern web experiences
+          </p>
+          <a
+            href="#contact"
+            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-600"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+            About Me
+          </h2>
+          <div className="max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+            <p className="mb-4">
+              I&apos;m a passionate frontend developer with expertise in modern web
+              technologies. I love creating beautiful, responsive, and
+              user-friendly interfaces.
+            </p>
+            <p>
+              With a strong foundation in React, Next.js, and TypeScript, I
+              build performant and maintainable web applications that deliver
+              exceptional user experiences.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
+            Skills
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {skills.map((skill) => (
+              <div
+                key={skill.name}
+                className="p-6 rounded-lg bg-gray-50 dark:bg-gray-800 text-center hover:shadow-lg transition-shadow"
+              >
+                <div className="text-4xl mb-4 text-blue-600 dark:text-blue-400">
+                  {skill.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {skill.name}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
+            Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
+            Get in Touch
+          </h2>
+          <div className="max-w-2xl mx-auto">
+            <form className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-600"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
