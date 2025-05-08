@@ -1,44 +1,82 @@
-import ProjectCard from 'app/components/ProjectCard'
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from 'react-icons/fa'
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiGit } from 'react-icons/si'
+import ProjectCard from "app/components/ProjectCard";
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiGit,
+  SiAngular,
+  SiVuedotjs,
+  SiTestinglibrary,
+  SiLaravel,
+  SiNginx,
+  SiPhp,
+} from "react-icons/si";
 
 const skills = [
-  { name: 'React', icon: <FaReact /> },
-  { name: 'Next.js', icon: <SiNextdotjs /> },
-  { name: 'TypeScript', icon: <SiTypescript /> },
-  { name: 'Node.js', icon: <FaNodeJs /> },
-  { name: 'HTML5', icon: <FaHtml5 /> },
-  { name: 'CSS3', icon: <FaCss3Alt /> },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
-  { name: 'Git', icon: <SiGit /> },
-]
+  { name: "React", icon: <FaReact /> },
+  { name: "Angular", icon: <SiAngular /> },
+  { name: "Vue", icon: <SiVuedotjs /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+  { name: "Next.js", icon: <SiNextdotjs /> },
+  { name: "TypeScript", icon: <SiTypescript /> },
+  { name: "Testing Library", icon: <SiTestinglibrary /> },
+  { name: "Node.js", icon: <FaNodeJs /> },
+  { name: "HTML5", icon: <FaHtml5 /> },
+  { name: "CSS3", icon: <FaCss3Alt /> },
+  { name: "Laravel", icon: <SiLaravel /> },
+  { name: "Nginx", icon: <SiNginx /> },
+  { name: "PHP", icon: <SiPhp /> },
+  { name: "Git", icon: <SiGit /> },
+];
 
 const projects = [
   {
-    title: 'E-commerce Platform',
-    description: 'A modern e-commerce platform built with Next.js, featuring real-time inventory management and secure payment processing.',
-    image: '/projects/ecommerce.jpg',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-    demoUrl: 'https://ecommerce-demo.com',
-    githubUrl: 'https://github.com/username/ecommerce',
+    title: "E-commerce Platform",
+    description:
+      "A modern e-commerce platform built with Vue and vuetify, featuring real-time inventory management and secure payment processing.",
+    image: "/projects/ecommerce.jpg",
+    technologies: ["Vue", "TypeScript", "Vuetify"],
+    demoUrl: "https://hilazia.online",
+    githubUrl: "https://github.com/AbnirHencazs/HilaziaVue",
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates and team collaboration features.',
-    image: '/projects/task-manager.jpg',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-    demoUrl: 'https://task-manager-demo.com',
-    githubUrl: 'https://github.com/username/task-manager',
+    title: "Mocktube",
+    description:
+      "A youtube clone (mocktube) using Google Youtube data API. Has search and favorites feature alongside light/dark modes.",
+    image: "/projects/task-manager.jpg",
+    technologies: ["React", "GoogleCloudPlatform", "localStorage"],
+    demoUrl: "https://hilazia.online/mocktube/",
+    githubUrl: "https://github.com/AbnirHencazs/react-bootcamp-2020",
   },
   {
-    title: 'Portfolio Website',
-    description: 'A responsive portfolio website showcasing projects and skills with a modern design.',
-    image: '/projects/portfolio.jpg',
-    technologies: ['Next.js', 'Tailwind CSS', 'TypeScript'],
-    demoUrl: 'https://portfolio-demo.com',
-    githubUrl: 'https://github.com/username/portfolio',
+    title: "NASA Photo of the day",
+    description:
+      "A React application which fetches Image of the Day from NASA api",
+    image: "/projects/task-manager.jpg",
+    technologies: ["React", "NASA API"],
+    demoUrl: "https://hilazia.online/nasa-calendar/",
+    githubUrl: "https://github.com/AbnirHencazs/react-testing-bootcamp-cp-2022",
   },
-]
+  {
+    title: "Task Management App",
+    description:
+      "A collaborative task management application with real-time updates and team collaboration features.",
+    image: "/projects/task-manager.jpg",
+    technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
+    demoUrl: "https://task-manager-demo.com",
+    githubUrl: "https://github.com/username/task-manager",
+  },
+  {
+    title: "Portfolio Website",
+    description:
+      "A responsive portfolio website showcasing projects and skills with a modern design.",
+    image: "/projects/portfolio.jpg",
+    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
+    demoUrl: "https://portfolio-demo.com",
+    githubUrl: "https://github.com/username/portfolio",
+  },
+];
 
 export default function Home() {
   return (
@@ -48,10 +86,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
-            Frontend Developer
+            Brian Sanchez Izquierdo
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-            Building modern web experiences
+            A seasoned Fullstack developer with 5+ years of experience
+            delivering reliable applications across SaaS, CMS, and IoT domains
+            for diverse industries, employing Atomic design and unit testing.
           </p>
           <a
             href="#contact"
@@ -70,8 +110,8 @@ export default function Home() {
           </h2>
           <div className="max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
             <p className="mb-4">
-              I&apos;m a passionate frontend developer with expertise in modern web
-              technologies. I love creating beautiful, responsive, and
+              I&apos;m a passionate frontend developer with expertise in modern
+              web technologies. I love creating beautiful, responsive, and
               user-friendly interfaces.
             </p>
             <p>
@@ -179,5 +219,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  )
+  );
 }
