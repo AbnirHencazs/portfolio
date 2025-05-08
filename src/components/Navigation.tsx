@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import MobileMenu from './MobileMenu'
-import ThemeToggle from './ThemeToggle'
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import MobileMenu from "./MobileMenu";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+      setIsScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -54,6 +54,12 @@ export default function Navigation() {
               Projects
             </Link>
             <Link
+              href="#experience"
+              className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition"
+            >
+              Work Experience
+            </Link>
+            <Link
               href="#contact"
               className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition"
             >
@@ -69,5 +75,5 @@ export default function Navigation() {
         </div>
       </div>
     </nav>
-  )
-} 
+  );
+}

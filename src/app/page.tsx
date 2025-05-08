@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import ProjectCard from "app/components/ProjectCard";
 import Timeline from "app/components/Timeline";
 import {
@@ -117,6 +120,60 @@ const experience = [
 ];
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/portfolio/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setStatus({
+        type: "success",
+        message: "Message sent successfully! I will get back to you soon.",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message:
+          error instanceof Error ? error.message : "Failed to send message",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section */}
@@ -220,10 +277,21 @@ export default function Home() {
       <section id="contact" className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
-            Let&apos;s get in touch and I&apos;ll send you my resume/CV.
+            Let&apos;s Get in Touch
           </h2>
           <div className="max-w-2xl mx-auto">
-            <form className="space-y-6">
+            {status.type && (
+              <div
+                className={`mb-6 p-4 rounded-lg ${
+                  status.type === "success"
+                    ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100"
+                    : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-100"
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -234,6 +302,10 @@ export default function Home() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
                 />
               </div>
@@ -247,6 +319,10 @@ export default function Home() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
                 />
               </div>
@@ -259,15 +335,24 @@ export default function Home() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   rows={4}
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-600"
+                disabled={isSubmitting}
+                className={`w-full bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors ${
+                  isSubmitting
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                }`}
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
