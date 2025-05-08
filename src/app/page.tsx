@@ -1,5 +1,12 @@
 import ProjectCard from "app/components/ProjectCard";
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import Timeline from "app/components/Timeline";
+import {
+  FaReact,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaBriefcase,
+} from "react-icons/fa";
 import {
   SiTypescript,
   SiNextdotjs,
@@ -35,7 +42,7 @@ const projects = [
     title: "E-commerce Platform",
     description:
       "A modern e-commerce platform built with Vue and vuetify, featuring real-time inventory management and secure payment processing.",
-    image: "/projects/ecommerce.jpg",
+    image: "https://hilazia.online/images/HilaziaHero.webp",
     technologies: ["Vue", "TypeScript", "Vuetify"],
     demoUrl: "https://hilazia.online",
     githubUrl: "https://github.com/AbnirHencazs/HilaziaVue",
@@ -73,8 +80,39 @@ const projects = [
       "A responsive portfolio website showcasing projects and skills with a modern design.",
     image: "/projects/portfolio.jpg",
     technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-    demoUrl: "https://portfolio-demo.com",
-    githubUrl: "https://github.com/username/portfolio",
+    demoUrl: "https://hilazia.online/portfolio/",
+    githubUrl: "https://github.com/AbnirHencazs/portfolio",
+  },
+];
+
+const experience = [
+  {
+    date: "April, 2022 - Present",
+    title: "Software Engineer - Frontend",
+    description:
+      "Leading development of flagship applications using TypeScript. Implementing CI/CD pipelines.",
+    icon: <FaBriefcase />,
+  },
+  {
+    date: "May, 2021 - April, 2022",
+    title: "Full Stack Developer",
+    description:
+      "Developed and maintained multiple web applications using modern javascript frameworks. Implemented responsive designs and RESTful APIs. Mentored junior developers.",
+    icon: <FaBriefcase />,
+  },
+  {
+    date: "January, 2021 - May, 2021",
+    title: "Frontend internship",
+    description:
+      "I took this internship while still working with my current employer at the time. We worked with React and learn a lot.",
+    icon: <FaBriefcase />,
+  },
+  {
+    date: "July, 2019 - May, 2021",
+    title: "Embedded Systems Developer/Web Developer",
+    description:
+      "Wrote firmware for microcontrollers in IoT applications. Built User interfaces for supporting the microcontrollers reports.",
+    icon: <FaBriefcase />,
   },
 ];
 
@@ -110,14 +148,19 @@ export default function Home() {
           </h2>
           <div className="max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
             <p className="mb-4">
-              I&apos;m a passionate frontend developer with expertise in modern
-              web technologies. I love creating beautiful, responsive, and
-              user-friendly interfaces.
+              I&apos;m a passionate for web technologies and confident in my
+              hability to create beautiful, responsive, and user-friendly
+              interfaces.
             </p>
-            <p>
+            <p className="mb-4">
               With a strong foundation in React, Next.js, and TypeScript, I
               build performant and maintainable web applications that deliver
               exceptional user experiences.
+            </p>
+            <p>
+              I love playing my bass guitar, going for runs in my favorite
+              public park, watching films and tv. I&apos;m a person who is
+              cheerful and fun, but also serious about my work ethic.
             </p>
           </div>
         </div>
@@ -161,11 +204,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section id="experience" className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
+            Work Experience
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <Timeline stops={experience} />
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
-            Get in Touch
+            Let&apos;s get in touch and I&apos;ll send you my resume/CV.
           </h2>
           <div className="max-w-2xl mx-auto">
             <form className="space-y-6">
